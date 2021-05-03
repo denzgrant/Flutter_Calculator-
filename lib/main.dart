@@ -10,7 +10,8 @@ class CalculatorApp extends StatelessWidget {
     //disables landscape mode
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
-      theme: ThemeData.light(),
+      themeMode: ThemeMode.system,
+      theme: ThemeData.dark(),
       home: CalculatorPage(),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kBlackColorText = Colors.black;
+const kWhiteColorText = Colors.white;
 const kOrangeColorText = Colors.deepOrange;
 const kOperationTextStyle = TextStyle(
   fontSize: 30,

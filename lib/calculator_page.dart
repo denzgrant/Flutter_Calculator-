@@ -11,14 +11,13 @@ class CalculatorPage extends StatefulWidget {
 
 class _CalculatorPageState extends State<CalculatorPage> {
   String result = '0';
-
   //the brain for our calculator
   CalculatorBrain calc = CalculatorBrain();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEDEBEC),
+      // backgroundColor: Color(0xFFEDEBEC),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -28,17 +27,25 @@ class _CalculatorPageState extends State<CalculatorPage> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 60),
+                  padding: const EdgeInsets.only(top: 50),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxHeight: 70,
-                      maxWidth: 300,
+                      maxHeight: 50,
+                      // maxWidth: 300,
                     ),
-                    child: Text(
-                      result,
-                      style: kResultTextStyle,
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      reverse: true,
+                      children: [
+                        Text(
+                          result.replaceAllMapped(
+                              new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                              (Match m) => '${m[1]},'),
+                          style: kResultTextStyle,
+                          softWrap: false,
+                          // overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -48,7 +55,9 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 30),
                   child: Text(
-                    calc.resultOperationText,
+                    calc.resultOperationText.replaceAllMapped(
+                        new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                        (Match m) => '${m[1]},'),
                     style: kOperationTextStyle,
                     softWrap: false,
                     overflow: TextOverflow.ellipsis,
@@ -63,7 +72,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: 'AC',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -74,8 +83,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '+/-',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
-                      buttonWidth: 8,
+                      colorText: kWhiteColorText,
+                      buttonWidth: 9,
                       onPressed: () {
                         setState(() {
                           result = calc.buttonPressed("+/-");
@@ -85,7 +94,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '%',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -115,7 +124,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '7',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -126,7 +135,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '8',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -137,7 +146,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '9',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -167,7 +176,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '4',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -178,7 +187,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '5',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -189,7 +198,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '6',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -219,7 +228,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '1',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -230,7 +239,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '2',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -241,7 +250,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '3',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -272,7 +281,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       buttonText: '0',
                       buttonBoxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(40.0)),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 2.9,
                       onPressed: () {
                         setState(() {
@@ -283,7 +292,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '.',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
@@ -294,7 +303,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     RoundButton(
                       buttonText: '=',
                       buttonBoxShape: NeumorphicBoxShape.circle(),
-                      colorText: kBlackColorText,
+                      colorText: kWhiteColorText,
                       buttonWidth: 8,
                       onPressed: () {
                         setState(() {
