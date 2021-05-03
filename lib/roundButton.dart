@@ -34,13 +34,13 @@ class _RoundButtonState extends State<RoundButton> {
         color: Colors.grey.shade900,
       ),
       child: Container(
-        height: MediaQuery.of(context).size.height / 13,
+        height: MediaQuery.of(context).size.height / 14,
         width: MediaQuery.of(context).size.width / widget.buttonWidth,
         child: Text(
           widget.buttonText,
           style: TextStyle(
             color: widget.colorText,
-            fontSize: 30,
+            fontSize: 25,
             fontFamily: "Montserrat",
           ),
         ),
